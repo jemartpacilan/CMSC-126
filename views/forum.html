@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+	<head>
+		<title>istoryUP</title>
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+		<section>
+
+			<ol>
+				{% for message in message%}
+				<li>{{message.content}}</li>
+				{% endfor %}
+			</ol>
+
+			<form action="/send" method="post">
+				<input type="text" name="message" placeholder="Write message" autofocus>
+				<button>Send</button>
+			</form>
+		</section>
+	</body>
+</html>

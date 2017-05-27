@@ -77,3 +77,5 @@ const Messages = database.define('message', {
 module.exports.User = User;
 module.exports.Topics = Topics;
 module.exports.Messages = Messages;
+
+database.sync();

@@ -18,15 +18,33 @@ app.use(bodyparser.urlencoded({
   extended: true
 }));
 
+app.use(cookieparser('secret-cookie'));
+app.use(session({ resave: false, saveUninitialized: false, secret: 'secret-cookie' }));
+app.use(flash());
+
+
 app.use('/static', express.static('./static'));
 app.use(require('./routes/route'));
 
-// app.use(cookieparser('secret-cookie'));
-// app.use(session({ resave: false, saveUninitialized: false, secret: 'secret-cookie' }));
-// app.use(flash());
-
 app.get('/', function(req, res) {
 	res.render('index.html');
+});
+
+app.post('/signup', function(req, res){
+	const name = req.body.name;
+	console.log(req.body);
+});
+
+app.get('/forum', function(req,res){
+  res.render('forum.html');
+});
+
+app.post('/send', function(req,res){
+  const content = req.body.content;
+  const user_id = req.session.user.id;
+  Messages.create({
+
+  })
 });
 
 app.listen(3000, function() {
