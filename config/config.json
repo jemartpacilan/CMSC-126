@@ -1,0 +1,6 @@
+{
+  "development": {
+    "url": "postgres://istoryup:istoryup@localhost:5432/istoryup",
+    "dialect": "pg"
+  }
+}

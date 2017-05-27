@@ -12,7 +12,7 @@ router.post('/signup', function(req, res) {
 	User.findOne({ where: { username: username } }).then(function(user) {
 
 		if (password !== confirmation) {
-            req.flash('signUpMessage', 'Passwords do not match.');
+            // req.flash('signUpMessage', 'Passwords do not match.');
 	        return res.redirect('/');
 	    }
 
