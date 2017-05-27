@@ -55,6 +55,7 @@ router.post('/signin', function(req, res) {
 
 		        req.flash('statusMessage', 'Signed in successfully!');
 						req.session.user = user;
+						req.session.topic_id = 0;
 						//req.user = user;
 
 				if (remember) {

@@ -19,7 +19,10 @@
 			</ol>
 			<ol>
 				{% for message in messages%}
-				<li>{{message.content}}</li>
+				<li>
+					{{message.content}} -
+					{{message.sender}}
+				</li>
 				{% endfor %}
 			</ol>
 

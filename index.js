@@ -36,9 +36,16 @@ app.post('/signup', function(req, res){
 });
 
 app.get('/forum', function(req,res){
-  Topics.findAll().then(function(result){
-    res.render('forum.html',{
-      topics : result
+//  var messages = Messages.findAll({where : {topic_id : req.session.topic_id}});
+
+
+  Messages.findAll({where : {topic_id : req.session.topic_id}}).then(function(msgs){
+
+    Topics.findAll().then(function(tpcs){
+      res.render('forum.html',{
+        topics : tpcs,
+        messages : msgs
+      });
     });
   });
 });
