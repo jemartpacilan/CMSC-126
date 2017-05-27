@@ -47,6 +47,28 @@ app.post('/send', function(req,res){
   })*/
 });
 
+app.post('/createTopic',retrieveSignedInUser, function(req,res){
+  const headline = req.body.headline;
+  const user = req.user;
+
+  console.log(headline);
+  console.log(user.id);
+
+  Topics.create({
+    headline : headline,
+    user_id : user.id,
+    votes: 0
+  }).then(function(){
+    req.flash('postTopicMessage', 'Successfully posted a topic!');
+    res.redirect('/forum');
+  });
+});
+
+function retrieveSignedInUser(req, res, next) {
+		req.user = req.session.user;
+    next();
+}
+
 app.listen(3000, function() {
 	console.log('Server is now running at port 3000');
 });
