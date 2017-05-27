@@ -1,0 +1,14 @@
+{
+  "name": "hackathon",
+  "version": "1.0.0",
+  "description": "hackathon for cmsc 126",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bajao, Lovely Jean G., Labrague, Lance Gabriel S., Pacilan, Jemart D.",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
