@@ -63,12 +63,12 @@ const Messages = database.define('messages', {
 	topic_id: {
 			type: Sequelize.INTEGER,
 			references: {
-					model: 'users',
+					model: 'topics',
 					key: 'id'
 			},
 			allowNull: false
 	},
-	topic_username: {
+	sender: {
 			type: Sequelize.STRING,
 			references: {
 					model: 'users',

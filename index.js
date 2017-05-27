@@ -36,15 +36,32 @@ app.post('/signup', function(req, res){
 });
 
 app.get('/forum', function(req,res){
-  res.render('forum.html');
+  Topics.findAll().then(function(result){
+    res.render('forum.html',{
+      topics : result
+    });
+  });
 });
 
-app.post('/send', function(req,res){
+app.post('/send', retrieveSignedInUser, function(req,res){
   const content = req.body.content;
-  const user_id = req.session.user.id;
-  /*Messages.create({
-    content : content,
-  })*/
+  const user = req.user;
+
+    Messages.create({
+      content : content,
+      topic_id : req.session.topic_id,
+      sender: user.username,
+      votes: 0
+    }).then(function(){
+      //req.flash('postTopicMessage', 'Successfully posted a topic!');
+      res.redirect('/forum');
+    });
+});
+
+app.post('/viewTopic', retrieveSignedInUser, function(req,res){
+  req.session.topic_id = req.body.topic_id;
+  res.redirect('/forum');
+  console.log(req.topic_id);
 });
 
 app.post('/createTopic',retrieveSignedInUser, function(req,res){
@@ -68,6 +85,11 @@ function retrieveSignedInUser(req, res, next) {
 		req.user = req.session.user;
     next();
 }
+
+/*function getName(id){
+    const topic_id = id;
+    console.log(topic_id);
+}*/
 
 app.listen(3000, function() {
 	console.log('Server is now running at port 3000');

@@ -5,16 +5,26 @@
 		<link rel="stylesheet" href="styles.css">
 	</head>
 	<body>
+		<h2>{{postTopicMessage}}</h2>
 		<section>
-
 			<ol>
-				{% for message in message%}
+				{% for topic in topics%}
+					<form action = "/viewTopic" method = "post">
+						<li>
+							<input type="hidden" name="topic_id" value="{{topic.id}}">
+							<button type = "submit">{{topic.headline}}</button>
+						</li>
+					</form>
+				{% endfor %}
+			</ol>
+			<ol>
+				{% for message in messages%}
 				<li>{{message.content}}</li>
 				{% endfor %}
 			</ol>
 
 			<form action="/send" method="post">
-				<input type="text" name="message" placeholder="Write message" autofocus>
+				<input type="text" name="content" placeholder="Write message" autofocus>
 				<button>Send</button>
 			</form>
 
@@ -22,7 +32,7 @@
 				<input type="text" name="headline" placeholder="Write new topic" autofocus>
 				<button>Start the conversation</button>
 			</form>
-			
+
 		</section>
 	</body>
 </html>
