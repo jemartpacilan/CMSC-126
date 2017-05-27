@@ -2,11 +2,11 @@
 <html>
 	<head>
 		<title>istoryUP</title>
-		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="../static/main.css">
 	</head>
 	<body>
-		<h2>{{postTopicMessage}}</h2>
-		<section>
+		<div>
+		<div class="topics">
 			<ol>
 				{% for topic in topics%}
 					<form action = "/viewTopic" method = "post">
@@ -17,25 +17,30 @@
 					</form>
 				{% endfor %}
 			</ol>
-			<ol>
-				{% for message in messages%}
-				<li>
-					{{message.content}} -
-					{{message.sender}}
-				</li>
-				{% endfor %}
-			</ol>
+		</div>
 
-			<form action="/send" method="post">
-				<input type="text" name="content" placeholder="Write message" autofocus>
-				<button>Send</button>
-			</form>
-
-			<form action="/createTopic" method="post">
-				<input type="text" name="headline" placeholder="Write new topic" autofocus>
-				<button>Start the conversation</button>
-			</form>
-
-		</section>
+		<div class="contents">
+				<ol>
+					{% for message in messages%}
+					<li>
+						{{message.content}} -
+						{{message.sender}} -
+						{{message.createdAt.toISOString()}}
+					</li>
+					{% endfor %}
+				</ol>
+				<div class = "form">
+				<form action="/send" method="post">
+					<input type="text" name="content" placeholder="Write message" autofocus>
+					<button>Send</button>
+				</form>
+			</div>
+				<div class = "form">
+				<form action="/createTopic" method="post">
+					<input type="text" name="headline" placeholder="Write new topic" autofocus>
+					<button>Start the conversation</button>
+				</form>
+			</div>
+	</div>
 	</body>
 </html>
