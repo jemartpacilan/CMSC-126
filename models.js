@@ -43,7 +43,7 @@ const Topics = database.define('topics', {
 	timestamps: true
 });
 
-const Messages = database.define('message', {
+const Messages = database.define('messages', {
 	id: {
 		type: Sequelize.INTEGER,
 		primaryKey: true,
