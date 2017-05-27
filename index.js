@@ -18,6 +18,9 @@ app.use(bodyparser.urlencoded({
   extended: true
 }));
 
+app.use('/static', express.static('./static'));
+app.use(require('./routes/route'));
+
 // app.use(cookieparser('secret-cookie'));
 // app.use(session({ resave: false, saveUninitialized: false, secret: 'secret-cookie' }));
 // app.use(flash());
