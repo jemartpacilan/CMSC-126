@@ -42,9 +42,9 @@ app.get('/forum', function(req,res){
 app.post('/send', function(req,res){
   const content = req.body.content;
   const user_id = req.session.user.id;
-  Messages.create({
-
-  })
+  /*Messages.create({
+    content : content,
+  })*/
 });
 
 app.listen(3000, function() {

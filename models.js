@@ -31,13 +31,19 @@ const Topics = database.define('topics', {
 	},
 	headline: {
 		type: Sequelize.STRING,
+		allowNull : false
 	},
 	user_id: {
 			type: Sequelize.INTEGER,
 			references: {
 					model: 'users',
 					key: 'id'
-			}
+			},
+			allowNull : false
+	},
+	votes: {
+			type: Sequelize.INTEGER,
+			allowNull: false
 	}
 }, {
 	timestamps: true
@@ -59,14 +65,20 @@ const Messages = database.define('messages', {
 			references: {
 					model: 'users',
 					key: 'id'
-			}
+			},
+			allowNull: false
 	},
 	topic_username: {
 			type: Sequelize.STRING,
 			references: {
 					model: 'users',
 					key: 'username'
-			}
+			},
+			allowNull: false
+	},
+	votes: {
+			type: Sequelize.INTEGER,
+			allowNull: false
 	}
 }, {
 	timestamps: true
