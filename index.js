@@ -21,10 +21,6 @@ app.use(bodyparser.urlencoded({
 app.use('/static', express.static('./static'));
 app.use(require('./routes/route'));
 
-// app.use(cookieparser('secret-cookie'));
-// app.use(session({ resave: false, saveUninitialized: false, secret: 'secret-cookie' }));
-// app.use(flash());
-
 app.get('/', function(req, res) {
 	res.render('index.html');
 });

@@ -2,7 +2,7 @@
 
 module.exports = {
     up: function (migration, Sequelize) {
-        return migration.createTable('message', {
+        return migration.createTable('messages', {
           id: {
         		type: Sequelize.INTEGER,
         		primaryKey: true,
@@ -37,6 +37,6 @@ module.exports = {
     },
 
     down: function (migration, Sequelize) {
-        return migration.dropTable('message');
+        return migration.dropTable('messages');
     }
 };
