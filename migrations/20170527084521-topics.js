@@ -19,6 +19,10 @@ module.exports = {
         					key: 'id'
         			}
         	},
+            votes: {
+        			type: Sequelize.INTEGER,
+        			allowNull: false
+        	},
             createdAt: {
                 type: Sequelize.DATE
             },
