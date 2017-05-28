@@ -27,6 +27,10 @@ module.exports = {
         					key: 'username'
         			}
         	},
+          votes: {
+        			type: Sequelize.INTEGER,
+        			allowNull: false
+        	},
             createdAt: {
                 type: Sequelize.DATE
             },
