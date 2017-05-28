@@ -3,7 +3,7 @@
 module.exports = {
     up: function (migration, Sequelize) {
         return migration.createTable('topics', {
-          id: {
+            id: {
         		type: Sequelize.INTEGER,
         		primaryKey: true,
         		autoIncrement: true,
